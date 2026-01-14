@@ -1,0 +1,63 @@
+spring:
+  application:
+    name: Auth Backend
+
+  datasource:
+    name: Auth System
+    url: jdbc:mysql://localhost:3306/authsystem
+    username: root
+    password: Ganesh@2005
+  
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope:
+            - email
+            - profile
+            - openid
+          github:
+            client-id: ${GITHUB_CLIENT_ID}
+            client-secret: ${GITHUB_CLIENT_SECRET}
+            scope:
+            - user.email
+            - read.user
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+
+# referesh token and jwt use 
+security:
+  jwt:
+      secert: ${JWT_SECERET:sfskjkvdslkhhlhvlnfdhogiouenurwvnrwimwryowuvrgrgu09jirwtycntuwrtkcj4ytu9cik0ti3mcbtuyruomnbfafrshfgnmljuyfd}
+      issuer: ${JWT_TOKEN:api.rdmishra.com}
+      access-ttl-seconds: ${JWT_ACCESS_TTL_SECONDS:600}
+      refresh-ttl-seconds: ${JWT_REFRESH_TTL_SECONDS:86400}
+      refresh-token-cookie-name: ${JWT_REFRESH-COOKIE_NAME:refreshToken}
+      cookie-secure: ${JWT_COOKIE_SECURE:true}
+      cookie-http-only: ${JWT_COOKIE_HTTP_ONLY:true}
+      cookie-same-site: ${JWT_COOKIE_SAME_SITE:lax}
+      cookie-domain-name: ${JWT_COOKIE_DOMAIN_NAME:localhost}
+
+app:
+    cors:
+      frontend-url: http://localhost:3000
+    auth:
+     frontend:
+        success-url: http://localhost:3000/oauthsuccess
+        failur-url: http://localhost:3000/oauthfailur
+
+
