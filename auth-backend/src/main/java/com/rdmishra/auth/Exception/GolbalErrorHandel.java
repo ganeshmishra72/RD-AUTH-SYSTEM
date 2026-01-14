@@ -23,7 +23,7 @@ public class GolbalErrorHandel {
             AuthenticationException.class
     })
     public ResponseEntity<ApiError> handelAuthenticationError(Exception e, HttpServletRequest request) {
-        var api = ApiError.of(HttpStatus.BAD_REQUEST.value(), "Unauthenticate", e.getMessage(),
+        ApiError api = ApiError.of(HttpStatus.BAD_REQUEST.value(), "Unauthenticate", e.getMessage(),
                 request.getRequestURI());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(api);
     }

@@ -4,6 +4,7 @@ import org.springframework.http.HttpHeaders;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseCookie;
+import org.springframework.http.ResponseCookie.ResponseCookieBuilder;
 import org.springframework.stereotype.Service;
 
 import jakarta.servlet.http.HttpServletResponse;
@@ -33,7 +34,7 @@ public class CookieServices {
     }
 
     public void attatchRefreshCookie(HttpServletResponse response, String value, int maxage) {
-        var resfreshtokenbulider = ResponseCookie.from(refreshTokenCookenName, value)
+        ResponseCookieBuilder resfreshtokenbulider = ResponseCookie.from(refreshTokenCookenName, value)
                 .httpOnly(cookiehttponly)
                 .maxAge(maxage)
                 .secure(cookiesecure)
@@ -48,7 +49,7 @@ public class CookieServices {
     }
 
     public void cleareRefreshCookie(HttpServletResponse response) {
-        var bulider = ResponseCookie.from(refreshTokenCookenName, "")
+        ResponseCookieBuilder bulider = ResponseCookie.from(refreshTokenCookenName, "")
                 .httpOnly(cookiehttponly)
                 .maxAge(0)
                 .secure(cookiesecure)

@@ -62,7 +62,7 @@ public class AuthController {
 
         // genearte -- refresh token
         String jti = UUID.randomUUID().toString();
-        var refreshTokenOba = RefreshToken.builder()
+        RefreshToken refreshTokenOba = RefreshToken.builder()
                 .jti(jti)
                 .user(user)
                 .createdAt(Instant.now())
@@ -140,7 +140,7 @@ public class AuthController {
         refreshTokenRepo.save(storedRefreshToken);
 
         User user = storedRefreshToken.getUser();
-        var newRefreshToken = RefreshToken.builder()
+        RefreshToken newRefreshToken = RefreshToken.builder()
                 .jti(newJti)
                 .user(user)
                 .createdAt(Instant.now())
