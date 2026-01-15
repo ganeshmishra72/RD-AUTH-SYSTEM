@@ -1,7 +1,9 @@
+server:
+  port: ${PORT:8080}
 spring:
   application:
     name: Auth Backend
-
+  
   datasource:
     name: Auth System
     url: jdbc:mysql://mysql-25d695cf-rdmishra.b.aivencloud.com:22777/defaultdb
