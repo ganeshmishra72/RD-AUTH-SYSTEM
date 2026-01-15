@@ -55,7 +55,7 @@ security:
 
 app:
     cors:
-      frontend-url: http://localhost:3000
+      frontend-url: https://auth-frontend-phi.vercel.app
     auth:
      frontend:
         success-url: http://localhost:3000/oauthsuccess
