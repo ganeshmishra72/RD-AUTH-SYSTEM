@@ -5,8 +5,8 @@ spring:
   datasource:
     name: Auth System
     url: jdbc:mysql://mysql-25d695cf-rdmishra.b.aivencloud.com:22777/defaultdb
-    username: avnadmin
-    password: AVNS_NRl3ILkqsu6CCNmf7e8
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
   
   servlet:
