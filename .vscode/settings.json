@@ -2,5 +2,6 @@
     "microsoft-sovereign-cloud.customEnvironment": {
 
     },
-    "microsoft-sovereign-cloud.environment": ""
+    "microsoft-sovereign-cloud.environment": "",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
