@@ -6,7 +6,7 @@ spring:
   
   datasource:
     name: Auth System
-    url: jdbc:mysql://mysql-25d695cf-rdmishra.b.aivencloud.com:22777/defaultdb
+    url: jdbc:mysql://mysql-25d695cf-rdmishra.b.aivencloud.com:22777/defaultdb?ssl-mode=REQUIRED
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -17,6 +17,7 @@ spring:
       max-file-size: 10MB
       max-request-size: 10MB
   jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
     show-sql: true
     hibernate:
       ddl-auto: update
