@@ -61,8 +61,12 @@ public class SecurityConfig {
                                 .anyRequest().authenticated())
 
                 // oauth2 operation codes
-                .oauth2Login(oauth -> oauth.defaultSuccessUrl("https://auth-frontend-phi.vercel.app/dashboard/home")
-                        .failureHandler(null))
+                .oauth2Login(
+                        oauth -> oauth.defaultSuccessUrl("https://auth-frontend-phi.vercel.app/dashboard/home", true)
+                                .failureHandler((request, response, exception) -> {
+                                    response.sendRedirect(
+                                            "https://auth-frontend-phi.vercel.app/login?error=true");
+                                }))
                 .logout(AbstractHttpConfigurer::disable)
                 .exceptionHandling(ex -> ex.authenticationEntryPoint((request, response, e) -> {
                     // errormessage
