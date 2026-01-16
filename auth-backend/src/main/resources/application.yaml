@@ -63,10 +63,10 @@ security:
 
 app:
     cors:
-      frontend-url: https://auth-frontend-phi.vercel.app,http://localhost:3000
+      frontend-url: https://rdmishra-authsys.vercel.app,http://localhost:3000
     auth:
      frontend:
-        success-url: https://auth-frontend-phi.vercel.app/oauthsuccess
-        failur-url: https://auth-frontend-phi.vercel.app/oauthfailur
+        success-url: https://rdmishra-authsys.vercel.app/oauthsuccess
+        failur-url: https://rdmishra-authsys.vercel.app/oauthfailur
 
 
