@@ -49,7 +49,7 @@ public class SecurityConfig {
 
         http.csrf(c -> c.disable())
                 .cors(Customizer.withDefaults())
-                .sessionManagement(sa -> sa.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
+                .sessionManagement(sa -> sa.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(
                         authorize -> authorize
                                 .requestMatchers("/api/v1/auth/register").permitAll()
@@ -61,12 +61,12 @@ public class SecurityConfig {
                                 .anyRequest().authenticated())
 
                 // oauth2 operation codes
-                .oauth2Login(
-                        oauth -> oauth.defaultSuccessUrl("https://auth-frontend-phi.vercel.app/dashboard/home", true)
-                                .failureHandler((request, response, exception) -> {
-                                    response.sendRedirect(
-                                            "https://auth-frontend-phi.vercel.app/login?error=true");
-                                }))
+                .oauth2Login(oauth2 -> oauth2.successHandler(successHandler)
+
+                        .failureHandler((request, response, exception) -> {
+                            response.sendRedirect(
+                                    "https://auth-frontend-phi.vercel.app/login?error=true");
+                        }))
                 .logout(AbstractHttpConfigurer::disable)
                 .exceptionHandling(ex -> ex.authenticationEntryPoint((request, response, e) -> {
                     // errormessage

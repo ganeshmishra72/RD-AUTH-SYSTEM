@@ -12,8 +12,8 @@ spring:
   datasource:
     name: Auth System
     url: jdbc:mysql://mysql-25d695cf-rdmishra.b.aivencloud.com:22777/defaultdb?ssl-mode=REQUIRED
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    username: ${DB_USERNAME:avnadmin}
+    password: ${DB_PASSWORD:AVNS_NRl3ILkqsu6CCNmf7e8}
     driver-class-name: com.mysql.cj.jdbc.Driver
   
   servlet:
@@ -58,8 +58,8 @@ security:
       refresh-token-cookie-name: ${JWT_REFRESH-COOKIE_NAME:refreshToken}
       cookie-secure: ${JWT_COOKIE_SECURE:true}
       cookie-http-only: ${JWT_COOKIE_HTTP_ONLY:true}
-      cookie-same-site: ${JWT_COOKIE_SAME_SITE:lax}
-      cookie-domain-name: ${JWT_COOKIE_DOMAIN_NAME:localhost}
+      cookie-same-site: ${JWT_COOKIE_SAME_SITE:none}
+      cookie-domain-name: ""
 
 app:
     cors:

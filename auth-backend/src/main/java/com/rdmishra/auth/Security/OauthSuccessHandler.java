@@ -69,7 +69,7 @@ public class OauthSuccessHandler implements AuthenticationSuccessHandler {
                         .name(name)
                         .imageUrl(picture)
                         .enable(true)
-                        .provider(Provider.GITHUB)
+                        .provider(Provider.GOOGLE)
                         .providerId(googleId)
                         .build();
                 user = repo.findByEmail(email).orElseGet(() -> repo.save(newUser));
@@ -87,7 +87,7 @@ public class OauthSuccessHandler implements AuthenticationSuccessHandler {
                         .name(name)
                         .imageUrl(image)
                         .enable(true)
-                        .provider(Provider.GOOGLE)
+                        .provider(Provider.GITHUB)
                         .providerId(githubId)
                         .build();
                 user = repo.findByEmail(email).orElseGet(() -> repo.save(newUser));
